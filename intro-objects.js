@@ -79,23 +79,22 @@ console.assert(wordFrequencyObject.black === 5)
 // The dog constructor (which is what this is) should take a name input, and the
 // dog should receive the assigned name.
 
-function GenerateDog( name, legs, weight, color, speak('message') ) {
+function generateDog(name) {
   this.name = name;
-  this.legs = legs;
-  this.weight = weight;
-  this.color = color;
+  this.legs = 4;
+  this.weight = 150;
+  this.color = "silver";
   this.speak = function(message) {
-    // returns a new version of message - as string where the first letter of every word is replaced with the letter 'r'.
-    // string -> array
-    // replace first index of each array to r -> nested "for" loops
+    var speechArray = []
+    var shortSpeech = ""
+    speechArray = message.split(' ')
+    for (var i = 0; i < speechArray.length; i++) {
+         shortSpeech = shortSpeech + "r" + speechArray[i].substr(1, speechArray[i].length) + " "
+    }
+    var rSpeech = shortSpeech
+    return rSpeech
   }
 }
-
-
-
-
-
-
 
 
 var dog = generateDog('rex')
@@ -122,10 +121,25 @@ console.assert(dog.name === 'carl')
 
 // tests
 // ---
+
+ffunction pluck(arrayObject, key) {
+    var arrayOfValue =[]
+    var objectHolder = {}
+
+    for (var i = 0; i < arrayObject.length; i++) {
+        objectHolder = arrayObject[i]
+        arrayOfValue.push(objectHolder[key])
+
+    }console.log(arrayOfValue)
+
+}
+
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}]
 
 console.assert(pluck(stooges, 'name')[0] === 'moe')
 console.assert(pluck(stooges, 'age')[2] === 60)
+
+
 
 
 // Part 5
@@ -136,7 +150,9 @@ console.assert(pluck(stooges, 'age')[2] === 60)
 
 
 
-var users = [{obama: 'president@gmail.com',hobby: 'basketball'},{trump: 'americamoneywin@yahoo.com', hobby:'dealmaking'},{bush: 'jeb!@hotmail.com',hobby:'portraiture'}]
+var users = [{obama: 'president@gmail.com',hobby: 'basketball'},
+{trump: 'americamoneywin@yahoo.com', hobby:'dealmaking'},
+{bush: 'jeb!@hotmail.com',hobby:'portraiture'}]
 // should yield: [{'president@gmail.com': 'obama',basketball: 'hobby'}, ....]
 
 var flippedUsers = reverseObjects(users)
@@ -154,30 +170,23 @@ console.assert(flippedUsers[1].dealmaking === 'hobby')
 
 
 var MakeItTom = function(object) {
-	for (var prop in object) {
-		if (prop === 'name') {
-            object.prop = 'Tom'
+    for (var prop in object) {
+        if (prop === 'name') {
+            object[prop] = 'Tom'
         }
-	}
-	return object
+    }
+    return object
 }
 
 var sampleObject = {
-	mass: '5.972 × 10^24 kg',
-	age: '4.543 billion years',
-	name: 'Earth'
+    mass: '5.972 × 10^24 kg',
+    age: '4.543 billion years',
+    name: 'Earth'
 }
 
-var planetTom = new MakeItTom(sampleObject)
+var planetTom =  MakeItTom(sampleObject)
 
-console.assert(planetTom.name === 'Tom')
-
-
-
-
-
-
-
+console.log(planetTom.name === 'Tom')
 
 
 
